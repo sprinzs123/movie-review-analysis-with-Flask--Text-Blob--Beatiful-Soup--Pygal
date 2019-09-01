@@ -1,1 +1,1 @@
-web gunicorn app:movie-reviews-sentiment
+web gunicorn manage:app
