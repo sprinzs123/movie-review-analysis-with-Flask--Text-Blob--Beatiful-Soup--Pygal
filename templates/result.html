@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>Sentiment Results</title>
+      <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <div class="menu">
+        <a href="https://www.youtube.com/watch?v=Q76zD6d8-LY">
+        <img src="static/git.png"></a>
+    </div>
+<h1>Results of your movie</h1>
+    <div class="wrapper">
+          <div class="column">
+              <h3>Most Negative Reviews</h3>
+                  <ol>{% for each in negative %}
+                        <li>{{each}}</li>
+                        {% endfor %}</ol>
+                    </div>
+          <div class="column">
+              <h3>Most Positive</h3>
+                    <ol>{% for each in positive %}
+                        <li>{{each}}</li>
+                         {% endfor %}</ol>
+                       </div>
+          <div class="column">
+              <h3>Most Subjective Reviews</h3>
+                    <ol>{% for each in objective %}
+                         <li>{{each}}</li>
+                         {% endfor %}</ol>
+                      </div>
+          <div class="column">
+              <h3>Most Objective Reviews</h3>
+                    <ol>{% for each in subjective %}
+                        <li>{{each}}</li>
+                        {% endfor %}</ol>
+                    </div>
+                </div>
+        <div class="explain">
+              <h3>Explanation of TextBlob Scores</h3>
+              <p>Negative to positive scale is -1 to 1</p>
+              <p>Subjectivity scale 0 to 1 where 0 is most objective and 1 most subjective</p>
+            </div>
+<h2>Graphical and Statistical Representation</h2>
+    <div class="data">
+        <div class="wrapper2">
+            <div class="graph">
+                    <embed type="image/svg+xml" src={{graph_data|safe}}>
+                 </div>
+            <div class="graph">
+			        <embed type="image/svg+xml" src={{graph_data2|safe}}>
+	             </div>
+            <div class="stats">
+                    <ul>
+                      <li>Average Polarity is {{pol_avg|round(2, 'floor') }}</li>
+                      <li>Polarity for 40% of people is from {{ (pol_avg-0.5*pol_std)|round(2, 'floor') }} to {{(pol_avg+0.5*pol_std)|round(2, 'floor')}}  </li>
+                      <li>Polarity for 68% of people is from {{(pol_avg-pol_std)|round(2, 'floor')}} to {{(pol_avg+pol_std)|round(2, 'floor')}}</li>
+                      <li>Polarity for 95% of people is from {{(pol_avg-2*pol_std)|round(2, 'floor')}} to {{(pol_avg+2*pol_std)|round(2, 'floor')}}</li>
+                     </ul>
+                   </div>
+            <div class="stats">
+                 <ul>
+                      <li>Average Subjectivity is {{subj_avg|round(2, 'floor')}}</li>
+                      <li>Subjectivity for 40% of people is from {{(subj_avg-0.5*pol_std)|round(2, 'floor')}} to {{(subj_avg+0.5*pol_std)|round(2, 'floor')}} </li>
+                      <li>Subjectivity for 68% of people is from {{(subj_avg-pol_std)|round(2, 'floor')}} to {{(subj_avg+pol_std)|round(2, 'floor')}}</li>
+                      <li>Subjectivity for 95% of people is from {{(subj_avg-2*pol_std)|round(2, 'floor')}} to {{(  subj_avg+2*pol_std)|round(2, 'floor')}}</li>
+                 </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

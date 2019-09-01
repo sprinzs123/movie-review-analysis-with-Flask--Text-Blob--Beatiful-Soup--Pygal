@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>Review the review</title>
+
+      <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <div class="menu">
+        <a href="https://www.youtube.com/watch?v=Q76zD6d8-LY">
+        <img src="static/git.png"></a>
+    </div>
+    <div class="titles">
+        <h1>Undertand what is sentiment of RottenTomatoes critics reviews are with power of python and TextBlob</h1>
+</div>
+            {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <article class="message_flash">
+            <div class="message-body">
+              {% for msg in messages %}
+                <p>{{ msg }}</p>
+              {% endfor %}
+            </div>
+          </article>
+          {% endif %}
+        {% endwith %}
+  <div class="columns">
+      <form action="{{ url_for('results') }}" method="POST">
+          <div class="wrap">
+             <div class="search">
+                <input type="text" name="url" class="searchTerm" placeholder="Just paste full URL from rotten tomatoes of movie or show that have critics reviews">
+                <button type="submit" class="searchButton">Search</button>
+                  <i class="fa fa-search"></i>
+               </div>
+              <p>Please be patient depending on number of reviews it can take few seconds</p>
+          </div>
+       </form>
+  </div>
+
+</body>
+</html>
