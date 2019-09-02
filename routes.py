@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
-from tomato import critic_reviews as scripts
-from tomato import stats_builder as make_data
+from movie-review-analysis-with-Flask--Text-Blob--Beatiful-Soup--Pygal import critic_reviews as scripts
+from movie-review-analysis-with-Flask--Text-Blob--Beatiful-Soup--Pygal import stats_builder as make_data
 import pygal
 
 app = Flask(__name__)
