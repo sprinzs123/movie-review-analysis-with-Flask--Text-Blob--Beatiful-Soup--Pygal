@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
-from movie-review-analysis-with-Flask--Text-Blob--Beatiful-Soup--Pygal import critic_reviews as scripts
-from movie-review-analysis-with-Flask--Text-Blob--Beatiful-Soup--Pygal import stats_builder as make_data
+import critic_reviews as scripts
+import stats_builder as make_data
 import pygal
 
 app = Flask(__name__)
